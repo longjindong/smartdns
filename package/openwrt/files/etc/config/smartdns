@@ -1,4 +1,95 @@
-config 'smartdns'
-	option 'enabled' '0'
-	
-config 'domain-rule'
+
+config smartdns
+	option enabled '1'
+	option server_name 'SDvstDNS'
+	option port '53'
+	option auto_set_dnsmasq '0'
+	option tcp_server '1'
+	option ipv6_server '0'
+	option bind_device '0'
+	option dualstack_ip_selection '0'
+	option serve_expired '1'
+	option cache_persist '1'
+	option resolve_local_hostnames '1'
+	option force_https_soa '1'
+	option rr_ttl_min '600'
+	option seconddns_port '6335'
+	option seconddns_tcp_server '0'
+	option prefetch_domain '1'
+	option cache_size '8192'
+	option seconddns_enabled '1'
+	option seconddns_server_group 'gfw'
+	option enable_auto_update '1'
+	option old_port '53'
+	option old_enabled '1'
+	option old_auto_set_dnsmasq '0'
+
+config domain-rule
+	option server_group 'china'
+	option no_speed_check '1'
+	option force_aaaa_soa '1'
+	option forwarding_domain_set_file '/etc/smartdns/domain-set/chnlist'
+
+config server
+	option enabled '1'
+	option name '114'
+	option ip '114.114.114.114'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name 'baidu'
+	option ip '180.76.76.76'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name 'aliyun'
+	option ip '223.5.5.5'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name 'dnspod'
+	option ip '119.29.29.29'
+	option type 'udp'
+	option server_group 'china'
+
+config server
+	option enabled '1'
+	option name '888'
+	option ip '8.8.8.8'
+	option type 'tcp'
+	option server_group 'gfw'
+
+config server
+	option enabled '1'
+	option name '111'
+	option ip '1.1.1.1'
+	option type 'tcp'
+	option server_group 'gfw'
+
+config domain-rule-list
+	option enabled '1'
+	option name 'gfw'
+	option server_group 'gfw'
+	option domain_list_file '/etc/smartdns/domain-set/gfwlist'
+	option block_domain_type 'none'
+	option force_aaaa_soa '1'
+	option ipset_name 'gfwaa'
+
+config download-file
+	option name 'chnlist'
+	option url 'http://47.107.145.50/routelist/chnlist'
+	option type 'list'
+	option desc 'chnlist'
+
+config download-file
+	option name 'gfwlist'
+	option url 'http://47.107.145.50/routelist/gfwlist'
+	option type 'list'
+	option desc 'gfwlist'
+
